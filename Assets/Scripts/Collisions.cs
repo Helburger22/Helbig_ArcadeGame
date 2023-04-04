@@ -15,7 +15,8 @@ public class Collisions : MonoBehaviour
     public bool isGameActive;
     public Button restartButton;
     public GameObject titleScreen;
-    public TextMeshProUGUI livesText;
+    public TextMeshProUGUI p1LivesText;
+    public TextMeshProUGUI p2LivesText;
     // Start is called before the first frame update
     void Start()
     {
