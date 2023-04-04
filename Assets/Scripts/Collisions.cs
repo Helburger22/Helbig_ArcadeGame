@@ -1,9 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Collisions : MonoBehaviour
 {
+    public int maxHealth = 5;
+    public int health = 5;
+    public TextMeshProUGUI healthText;
+    public TextMeshProUGUI gameOverScreen;
+    public string winnerMessage;
+    public bool isGameActive;
+    public Button restartButton;
+    public GameObject titleScreen;
+    public TextMeshProUGUI livesText;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +28,22 @@ public class Collisions : MonoBehaviour
         
     }
     void OnTriggerEnter(Collider other) {
-        //Destroy(gameObject);
+        health--;
+        healthText.value = health / maxHealth;
         Destroy(other.gameObject);
-        Debug.Log("Oppenent Hit");
+        if (health < 1)
+        {
+            Destroy(gameObject);
+            gameOverScreen.text = winnerMessage;
+            Debug.Log("Oppenent Hit");
+        }
+    }
+    
+    public void GameOver()
+    {
+        gameOverScreen.gameObject.SetActive(true);
+        isGameActive = false;
+        restartButton.gameObject.SetActive(true);
+        
     }
 }
