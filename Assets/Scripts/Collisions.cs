@@ -29,7 +29,7 @@ public class Collisions : MonoBehaviour
     }
     void OnTriggerEnter(Collider other) {
         health--;
-        healthText.value = health / maxHealth;
+        healthText.text = "P1 Lives: "+ health;
         Destroy(other.gameObject);
         if (health < 1)
         {
