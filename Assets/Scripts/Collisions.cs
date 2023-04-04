@@ -15,6 +15,7 @@ public class Collisions : MonoBehaviour
     public Button restartButton;
     public GameObject titleScreen;
     public TextMeshProUGUI healthText;
+    public string player;
     
     // Start is called before the first frame update
     void Start()
@@ -29,7 +30,7 @@ public class Collisions : MonoBehaviour
     }
     void OnTriggerEnter(Collider other) {
         health--;
-        healthText.text = "P1 Lives: "+ health;
+        healthText.text = player+  " Lives: "+ health;
         Destroy(other.gameObject);
         if (health < 1)
         {
