@@ -506,14 +506,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   health: 5
-  healthText: {fileID: 0}
   gameOverScreen: {fileID: 1696875423}
   winnerMessage: Player 1 Wins!
   isGameActive: 0
-  restartButton: {fileID: 0}
-  titleScreen: {fileID: 0}
-  p1LivesText: {fileID: 0}
-  p2LivesText: {fileID: 0}
+  restartButton: {fileID: 1176232583}
+  titleScreen: {fileID: 39991748}
+  healthText: {fileID: 1101422406}
 --- !u!1 &495097606
 GameObject:
   m_ObjectHideFlags: 0
@@ -1760,14 +1758,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   health: 5
-  healthText: {fileID: 0}
   gameOverScreen: {fileID: 1696875423}
   winnerMessage: Player 2 Wins!
   isGameActive: 0
   restartButton: {fileID: 1176232583}
   titleScreen: {fileID: 39991748}
-  p1LivesText: {fileID: 1405572712}
-  p2LivesText: {fileID: 1101422406}
+  healthText: {fileID: 1405572712}
 --- !u!1 &1176232581
 GameObject:
   m_ObjectHideFlags: 0

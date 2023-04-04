@@ -9,14 +9,13 @@ public class Collisions : MonoBehaviour
 {
     public int maxHealth = 5;
     public int health = 5;
-    public TextMeshProUGUI healthText;
     public TextMeshProUGUI gameOverScreen;
     public string winnerMessage;
     public bool isGameActive;
     public Button restartButton;
     public GameObject titleScreen;
-    public TextMeshProUGUI p1LivesText;
-    public TextMeshProUGUI p2LivesText;
+    public TextMeshProUGUI healthText;
+    
     // Start is called before the first frame update
     void Start()
     {
