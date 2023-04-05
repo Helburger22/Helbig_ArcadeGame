@@ -16,11 +16,12 @@ public class Collisions : MonoBehaviour
     public GameObject titleScreen;
     public TextMeshProUGUI healthText;
     public string player;
+    public SpriteRenderer sprite;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        UpdateHealth();
     }
 
     // Update is called once per frame
@@ -29,15 +30,20 @@ public class Collisions : MonoBehaviour
         
     }
     void OnTriggerEnter(Collider other) {
-        health--;
-        healthText.text = player+  " Lives: "+ health;
-        Destroy(other.gameObject);
-        if (health < 1)
+        if (other.CompareTag("Bullet"))
         {
-            Destroy(gameObject);
-            gameOverScreen.text = winnerMessage;
-            Debug.Log("Oppenent Hit");
+            health--;
+            UpdateHealth();
+            Destroy(other.gameObject);
+            StartCoroutine(HitFLash());
+            if (health < 1)
+            {
+                Destroy(gameObject);
+                gameOverScreen.text = winnerMessage;
+                Debug.Log("Oppenent Hit");
+            }
         }
+
     }
     
     public void GameOver()
@@ -46,5 +52,16 @@ public class Collisions : MonoBehaviour
         isGameActive = false;
         restartButton.gameObject.SetActive(true);
         
+    }
+
+    void UpdateHealth(){
+        healthText.text = player+  " Lives: "+ health;
+    }
+
+    IEnumerator HitFLash()
+    {
+        sprite.color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        sprite.color = Color.white;
     }
 }
