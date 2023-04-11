@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Shoot : MonoBehaviour
 {
@@ -13,17 +15,22 @@ public class Shoot : MonoBehaviour
     //public KeyCode reloadKey;
     public SpriteRenderer sprite;
     public PlayerController player;
+    public TextMeshProUGUI ammoText;
+    public string Player;
     // Start is called before the first frame update
     void Start()
     {
-
+        UpdateAmmo();
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetKeyDown(shootKey) && !reloading)
         {
+            UpdateAmmo();
+
             if (ammo > 0)
             {
                 //Launch a projectile from the player
@@ -54,5 +61,10 @@ public class Shoot : MonoBehaviour
         sprite.color = Color.white;
         reloading = false;
         ammo = maxAmmo;
+    }
+
+    void UpdateAmmo()
+    {
+        ammoText.text = Player + " Ammo: " + ammo;
     }
 }
