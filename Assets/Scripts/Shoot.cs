@@ -26,31 +26,25 @@ public class Shoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateAmmo();
         
         if (Input.GetKeyDown(shootKey) && !reloading)
         {
-            UpdateAmmo();
+            
 
             if (ammo > 0)
             {
                 //Launch a projectile from the player
                 Instantiate(projectilePrefab, bulletSpawn.position, bulletSpawn.rotation);
                 ammo--;
+                
             }
 
 
         }
         if (ammo < 1) //Input.GetKeyDown(reloadKey)
             {
-            if (maxAmmo > 0)
-            {
-                StartCoroutine(ReloadAnim());
-            }
-            else
-            {
-                player.Pistol();
-            }
-
+                StartCoroutine(ReloadAnim());    
         }
     }
     IEnumerator ReloadAnim()
@@ -60,7 +54,17 @@ public class Shoot : MonoBehaviour
         yield return new WaitForSeconds(1f);
         sprite.color = Color.white;
         reloading = false;
-        ammo = maxAmmo;
+         if (maxAmmo > 0){
+             ammo = maxAmmo;
+
+         }
+         else
+            {
+                ammo=24;
+                player.Pistol();
+            }
+        
+        UpdateAmmo();
     }
 
     void UpdateAmmo()

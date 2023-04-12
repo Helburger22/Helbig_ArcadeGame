@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public string moveAxis;
     public GameObject pistol;
     public GameObject mG;
+    public SpawnManager gunSpawner;
 
     // Start is called before the first frame update
     void Start()
@@ -53,7 +54,9 @@ public class PlayerController : MonoBehaviour
     public void Pistol()
     {
         pistol.SetActive(true);
+        
         mG.SetActive(false);
+        gunSpawner.SpawnPowerup();
     }
 
     public void Gunner()
